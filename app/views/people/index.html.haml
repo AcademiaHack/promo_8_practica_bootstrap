@@ -1,0 +1,32 @@
+%h1 People
+
+- if @people.empty?
+  %h4 No People!
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Birthdate
+        %th Gender
+        %th DNI
+        %th Customer?
+    %tbody
+      - @people.each do |person|
+        %tr
+          %td
+            = person.name
+          %td
+            = person.email
+          %td
+            = person.birthdate
+          %td
+            = person.gender
+          %td
+            = person.dni
+          %td
+            = person.customer
+
+%br/
+= link_to('New Person', new_person_path)

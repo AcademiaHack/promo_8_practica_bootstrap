@@ -3,11 +3,10 @@ class PeopleController < ApplicationController
     @people = Person.all
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
+    @person = Person.new
   end
 
   def create
@@ -19,17 +18,11 @@ class PeopleController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
 
-  end
+  def update; end
 
-  def update
-
-  end
-
-  def destroy
-
-  end
+  def destroy; end
 
   private
 
@@ -37,5 +30,4 @@ class PeopleController < ApplicationController
     params.require(:person).permit(:name, :email, :birthdate,
                                    :gender, :dni, :customer)
   end
-
 end

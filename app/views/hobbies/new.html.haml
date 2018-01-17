@@ -1,0 +1,17 @@
+%h1 Hobbies#new
+
+%br/
+= form_with(model: [@person, @hobby], local: true) do |form|
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :description
+    = form.text_area :description
+  .field
+    = form.label :kind
+    = form.select :kind, options_for_select(@kinds)
+  .field
+    = form.hidden_field :person_id
+  = form.submit
+

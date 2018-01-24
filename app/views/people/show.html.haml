@@ -1,0 +1,35 @@
+%h1= @person.name
+
+%p= @person.email
+%br/
+
+%span
+  = link_to('Edit', edit_person_path(@person))
+%br/
+%span
+  = link_to('Destroy', person_path(@person), method: :delete)
+
+- if @person.hobbies.present?
+  %h3 Hobibes
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Kind
+        %th Actions
+    %tbody
+      - @person.hobbies.each do |hobby|
+        %tr
+          %td
+            = hobby.name
+          %td
+            = hobby.description
+          %td
+            = hobby.kind
+          %td
+            = link_to('Edit', edit_hobby_path(hobby))
+            = link_to('Destroy', hobby_path(hobby), method: :delete)
+%br/
+= link_to('New Hobby', new_person_hobby_path(@person))

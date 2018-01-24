@@ -1,9 +1,9 @@
-%h1 Hobbies#new
+%h1 Hobbies#edit
 %span
-  = link_to('back', person_path(@person))
+  = link_to('back', person_path(@hobby.person))
 
 %br/
-= form_with(model: [@person, @hobby], local: true) do |form|
+= form_with(model: @hobby, local: true) do |form|
   .field
     = form.label :name
     = form.text_field :name

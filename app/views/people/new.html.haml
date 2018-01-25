@@ -24,5 +24,23 @@
     .field
       = form.label :no
       = form.radio_button :customer, false, checked: true
+  %h3 Hobies
+  = form.fields_for :hobbies do |hobby_fields|
+    %h3= "Hobby ##{hobby_fields.index + 1}"
+    .field
+      = hobby_fields.label :name
+      = hobby_fields.text_field :name
+    .field
+      = hobby_fields.label :description
+      = hobby_fields.text_area :description
+    .field
+      = hobby_fields.label :kind
+      = hobby_fields.select :kind, options_for_select(Hobby.kinds.keys)
+
+    = if @person.persisted?
+      .field
+        Delete:
+        = hobby_fields.check_box :_destroy
+  %hr
   = form.submit
 

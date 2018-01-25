@@ -15,6 +15,7 @@
 
 class Person < ApplicationRecord
   enum gender: %i[male female unknown]
-
   has_many :hobbies
+
+  accepts_nested_attributes_for :hobbies, reject_if: proc {|attributes| attributes['name'].blank? }
 end

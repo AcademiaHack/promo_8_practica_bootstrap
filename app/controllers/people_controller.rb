@@ -9,12 +9,15 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    3.times do
+      @person.hobbies.build
+    end
   end
 
   def create
     @person = Person.new(person_params)
     if @person.save
-      redirect_to people_path
+      redirect_to person_path(@person)
     else
       render :new
     end
@@ -44,6 +47,6 @@ class PeopleController < ApplicationController
 
   def person_params
     params.require(:person).permit(:name, :email, :birthdate,
-                                   :gender, :dni, :customer)
+                                   :gender, :dni, :customer, hobbies_attributes: [:name, :description, :kind])
   end
 end
